@@ -1,0 +1,20 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "s4f3-relay"
+version = "0.1.0"
+description = "Open-source MCP servers. Context relay infrastructure for AI systems."
+license = "Apache-2.0"
+requires-python = ">=3.10"
+dependencies = [
+    "fastmcp",
+    "httpx",
+    "websockets",
+    "rapidfuzz",
+    "pyyaml",
+]
+
+[project.urls]
+Repository = "https://github.com/46b-ETYKiAL/Itasha.Corp_S4F3-R3L4Y"

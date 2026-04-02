@@ -1,0 +1,10 @@
+{
+  "name": "github-native-mcp",
+  "version": "1.0.0",
+  "description": "Native GitHub MCP server wrapping gh CLI",
+  "type": "module",
+  "main": "index.js",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.0.0"
+  }
+}
