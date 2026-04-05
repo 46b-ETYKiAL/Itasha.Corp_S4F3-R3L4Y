@@ -1,0 +1,51 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - "v*"
+
+permissions:
+  contents: write
+  id-token: write
+
+jobs:
+  release:
+    name: Create Signed Release
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          fetch-depth: 0
+
+      - name: Install sigstore
+        run: pip install sigstore
+
+      - name: Create and sign release archive
+        run: |
+          TAG="${GITHUB_REF#refs/tags/}"
+          git archive --format=tar.gz --prefix="s4f3-relay-${TAG}/" HEAD -o "s4f3-relay-${TAG}.tar.gz"
+          # Sign with sigstore (keyless, OIDC-based)
+          python -m sigstore sign "s4f3-relay-${TAG}.tar.gz"
+
+      - name: Generate changelog
+        id: changelog
+        run: |
+          PREV_TAG=$(git tag --sort=-version:refname | head -2 | tail -1)
+          if [ -z "$PREV_TAG" ]; then
+            echo "body=Initial release" >> "$GITHUB_OUTPUT"
+          else
+            CHANGELOG=$(git log --oneline "$PREV_TAG"..HEAD)
+            echo "body<<EOF" >> "$GITHUB_OUTPUT"
+            echo "$CHANGELOG" >> "$GITHUB_OUTPUT"
+            echo "EOF" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@da05d552573ad5aba039eaac05058a918a7bf631 # v2.2.2
+        with:
+          body: ${{ steps.changelog.outputs.body }}
+          files: |
+            s4f3-relay-*.tar.gz
+            *.sigstore.json
+          generate_release_notes: true
