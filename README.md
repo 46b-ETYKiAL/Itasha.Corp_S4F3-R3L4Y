@@ -1,257 +1,161 @@
-<div align="center">
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset=".github/assets/header.svg" />
+    <source media="(prefers-color-scheme: light)" srcset=".github/assets/header.svg" />
+    <img src=".github/assets/header.svg" alt="S4F3-R3L4Y header banner — relay signal routing diagram on dark background" />
+  </picture>
+</p>
 
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset=".github/assets/header.svg">
-  <img alt="S4F3 R3L4Y — Open-source MCP servers by Itasha Corp" src=".github/assets/header.svg" width="100%">
-</picture>
+<p align="center">
+  <strong>Open-source MCP servers. Context relay infrastructure for AI systems.</strong>
+</p>
 
-*Signal relay infrastructure for the Wired. Every protocol finds its route.*
+<p align="center">
+  <a href="#what-is-this">About</a> &nbsp;&middot;&nbsp;
+  <a href="#installation">Install</a> &nbsp;&middot;&nbsp;
+  <a href="#quick-start">Quick Start</a> &nbsp;&middot;&nbsp;
+  <a href="#capabilities">Capabilities</a> &nbsp;&middot;&nbsp;
+  <a href="#the-network">Network</a> &nbsp;&middot;&nbsp;
+  <a href="#contributing">Contributing</a>
+</p>
 
-[![Python](https://img.shields.io/badge/python-3.10+-00FFFF.svg?style=flat-square)](https://www.python.org/downloads/)
-[![Node.js](https://img.shields.io/badge/node.js-18+-00FFFF.svg?style=flat-square)](https://nodejs.org/)
-[![MCP](https://img.shields.io/badge/MCP-servers-FF00FF.svg?style=flat-square)](https://modelcontextprotocol.io/)
-[![License](https://img.shields.io/badge/license-Apache_2.0-00FFFF.svg?style=flat-square)](LICENSE)
-[![Open Source](https://img.shields.io/badge/open_source-01fe36.svg?style=flat-square)](#-contributing)
-
----
-
-[**SERVERS**](#-servers) · [**INSTALL**](#-installation) · [**USAGE**](#-usage) · [**ARCHITECTURE**](#-architecture) · [**CONTRIBUTING**](#-contributing)
-
-</div>
-
----
-
-## > Overview
-
-**S4F3 R3L4Y** is a collection of open-source [Model Context Protocol](https://modelcontextprotocol.io/) (MCP) servers built by **Itasha Corp**. These servers relay context and tools between AI systems and external services — GitHub, ComfyUI, and MCP infrastructure management.
-
-Each server is independently installable and production-tested.
-
-```
-  AI client (Claude, etc.)              external services
-  ┌─────────────────────┐    MCP       ┌──────────────────┐
-  │  coding assistant    │ ◄─────────► │  GitHub API       │
-  │  image pipeline      │   relay     │  ComfyUI server   │
-  │  tool orchestrator   │ ◄─────────► │  MCP registry     │
-  └─────────────────────┘              └──────────────────┘
-```
+<p align="center">
+  <img src="https://img.shields.io/badge/MCP-00fffe?style=flat-square" alt="Model Context Protocol" />
+  <img src="https://img.shields.io/badge/Python-a020ff?style=flat-square&logo=python&logoColor=white" alt="Python" />
+  <img src="https://img.shields.io/badge/Node.js-0066ff?style=flat-square&logo=nodedotjs&logoColor=white" alt="Node.js" />
+  <img src="https://img.shields.io/badge/Apache--2.0-01fe36?style=flat-square" alt="Apache 2.0 License" />
+  <img src="https://img.shields.io/badge/Open_Source-01fe36?style=flat-square" alt="Open Source" />
+</p>
 
 ---
 
-## > Servers
+## What is this?
 
-### GitHub Native
+R3L4Y is a collection of open-source MCP (Model Context Protocol) servers that provide context relay infrastructure for AI systems. It includes two production servers: a GitHub Native MCP server and a ComfyUI MCP server.
 
-Lightweight MCP server wrapping the `gh` CLI. No Docker required.
+The GitHub server wraps the `gh` CLI in a Node.js MCP interface, giving AI agents structured access to repositories, issues, pull requests, and GitHub API operations. The ComfyUI server connects AI systems to local image generation through 36+ tools built on FastMCP.
 
-| Tool | Description |
-|------|-------------|
-| `create_issue` | Create GitHub issues |
-| `list_issues` | List and filter issues |
-| `get_issue` | Get issue details |
-| `create_pull_request` | Create PRs |
-| `list_pull_requests` | List and filter PRs |
-| `get_file_contents` | Read repository files |
-| `search_repositories` | Search repos by query |
-| `search_code` | Search code across repos |
+Both servers are designed to be reliable, well-documented, and easy to run. They are the open connective tissue between AI agents and the tools they need.
 
-**Stack**: Node.js, `@modelcontextprotocol/sdk`
-**Requires**: `gh` CLI authenticated
+## Installation
 
-### ComfyUI MCP Server
-
-Comprehensive MCP server for ComfyUI image generation with 36+ tools.
-
-| Category | Tools |
-|----------|-------|
-| Generation | txt2img, img2img, inpainting |
-| Models | Discovery, loading, architecture detection |
-| Queue | Job submission, monitoring, cancellation |
-| Monitoring | VRAM usage, model-specific thresholds |
-| Workflows | Template management, variable rendering |
-| Nodes | Schema validation, fuzzy matching |
-
-**Stack**: Python, FastMCP, httpx, websockets
-**Requires**: Running ComfyUI instance
-
-### MCP Management
-
-Infrastructure tools for managing multiple MCP servers.
-
-| Tool | Description |
-|------|-------------|
-| Tool Catalog | Discover and catalog all available MCP tools |
-| Loading Strategy | Smart lazy-loading and initialization |
-| Schema Extractor | Extract tool schemas from running servers |
-| Health Monitor | Health checks for lazy-loaded servers |
-| Agent Preloader | Preloading strategies for agent startup |
-| Server Sync | Configuration synchronization |
-
-**Stack**: Python, PyYAML
-
----
-
-## > Installation
-
-### GitHub Native Server
+### GitHub Native MCP Server
 
 ```bash
-cd servers/github-native
+cd github-native-mcp
 npm install
 ```
 
-Add to your MCP client configuration:
+### ComfyUI MCP Server
 
-```json
-{
-  "mcpServers": {
-    "github-native": {
-      "command": "node",
-      "args": ["path/to/servers/github-native/index.js"]
-    }
-  }
-}
+```bash
+cd comfyui-mcp
+pip install -r requirements.txt
 ```
+
+## Quick Start
+
+### GitHub Server
+
+```bash
+# Start the GitHub MCP server
+cd github-native-mcp
+npm start
+```
+
+The server requires the `gh` CLI to be installed and authenticated. It exposes GitHub operations — repository management, issue tracking, pull request workflows — as MCP tools.
 
 ### ComfyUI Server
 
 ```bash
-pip install fastmcp httpx websockets rapidfuzz
+# Start the ComfyUI MCP server
+cd comfyui-mcp
+python server.py
 ```
 
-```json
-{
-  "mcpServers": {
-    "comfyui": {
-      "command": "python",
-      "args": ["-m", "servers.comfyui.server"],
-      "env": {
-        "COMFYUI_URL": "http://localhost:8188"
-      }
-    }
-  }
-}
-```
-
-### Management Tools
-
-```bash
-pip install pyyaml
-```
-
----
-
-## > Usage
-
-### GitHub Native
-
-```bash
-# Standalone test
-node servers/github-native/index.js
-
-# The server exposes tools via MCP protocol — connect via any MCP client
-```
-
-### ComfyUI
-
-```python
-# Direct usage (outside MCP)
-from servers.comfyui.client import ComfyUIClient
-
-client = ComfyUIClient("http://localhost:8188")
-result = await client.txt2img(prompt="a quiet node in the network", steps=20)
-```
-
-### Management
-
-```bash
-# Discover all tools from running MCP servers
-python -m management --discover
-
-# Catalog tools
-python -m management --catalog
-```
-
----
-
-## > Architecture
+Requires a running ComfyUI instance. The server provides 36+ tools for workflow execution, image generation, model management, and queue control.
 
 ```
-s4f3-relay/
-├── servers/
-│   ├── github-native/      # Node.js — gh CLI wrapper
-│   │   ├── index.js        # MCP server entry point
-│   │   └── package.json    # Node dependencies
-│   └── comfyui/            # Python — FastMCP server
-│       ├── server.py        # 36+ tool definitions
-│       ├── client.py        # ComfyUI REST + WebSocket client
-│       ├── types.py         # Data models
-│       └── validator.py     # Node schema validation
-├── management/             # Python — MCP infrastructure
-│   ├── mcp_tool_catalog.py  # Tool discovery and indexing
-│   ├── mcp_loading_strategy.py  # Smart loading
-│   └── mcp_schema_extractor.py  # Schema extraction
-├── pyproject.toml          # Python package config
-└── LICENSE                 # Apache 2.0
+┌──────────────────────────────────────────┐
+│  SYSTEM NOTICE                           │
+│  ──────────────────────────────────────  │
+│  NODE TYPE : RELAY_NODE                  │
+│  STATUS    : ACTIVE                      │
+│  PROTOCOL  : MCP                         │
+└──────────────────────────────────────────┘
 ```
 
----
+## Capabilities
 
-## > Contributing
+- **GitHub Native MCP server** — full GitHub API access through the `gh` CLI
+- **ComfyUI MCP server** — 36+ tools for local AI image generation via FastMCP
+- **Repository operations** — clone, branch, commit, PR workflows through structured MCP tools
+- **Image generation** — workflow execution, queue management, model loading, output retrieval
+- **MCP management tools** — server lifecycle, health checks, and configuration utilities
+- **Production-ready** — tested, documented, and designed for real workloads
 
-Contributions welcome. Please:
+<details>
+<summary><strong>Technical Context</strong></summary>
 
-1. Fork the repository
-2. Create a feature branch (`feat/your-feature`)
-3. Write tests for new functionality
-4. Ensure all existing tests pass
-5. Submit a PR with a clear description
+R3L4Y implements the Model Context Protocol specification to provide AI agents with structured access to external tools and services. Each server exposes its capabilities as MCP tools with typed inputs and outputs.
 
-### Development
+The GitHub Native server is built on Node.js and delegates operations to the `gh` CLI, which handles authentication, rate limiting, and API versioning. This approach keeps the server thin and benefits from GitHub's own CLI improvements.
 
-```bash
-git clone https://github.com/46b-ETYKiAL/Itasha.Corp_S4F3-R3L4Y.git
-cd Itasha.Corp_S4F3-R3L4Y
-pip install -e ".[dev]"
+The ComfyUI server is built on Python with FastMCP. It communicates with a local ComfyUI instance over its HTTP API, translating MCP tool calls into workflow executions, queue operations, and asset management commands.
+
+</details>
+
+## The Network
+
+| Node | Role |
+|------|------|
+| [S4F3-R0UT3-4RB1T3R](https://github.com/46b-ETYKiAL/S4F3-R0UT3-4RB1T3R) | Central orchestration |
+| [S4F3-3TCH](https://github.com/46b-ETYKiAL/S4F3-3TCH) | ComfyUI custom nodes |
+
+## Tech Stack
+
+| Layer | Technology |
+|-------|------------|
+| GitHub Server | Node.js, gh CLI |
+| ComfyUI Server | Python, FastMCP |
+| Protocol | MCP (Model Context Protocol) |
+| License | Apache 2.0 |
+
+## Status
+
+<img src="https://img.shields.io/github/last-commit/46b-ETYKiAL/S4F3-R3L4Y?style=flat-square&color=00fffe" alt="Last commit timestamp for S4F3-R3L4Y" />
+
+> [!TIP]
+> This project is open source under the Apache 2.0 license. Contributions welcome.
+
+## Contributing
+
+Contributions are welcome. Please read [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines on submitting issues, feature requests, and pull requests.
+
+## License
+
+Licensed under the Apache License, Version 2.0. See [LICENSE](LICENSE) for the full text.
+
+```
+Copyright 2026 Itasha Corp
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
 ```
 
----
-
-## > Related
-
-| Repo | Description |
-|------|-------------|
-| [S4F3 R0UT3 4RB1T3R](https://github.com/46b-ETYKiAL/Itasha.Corp_S4F3-R0UT3-4RB1T3R) | Multi-agent orchestration system |
-| [S4F3 3TCH](https://github.com/46b-ETYKiAL/Itasha.Corp_S4F3-3TCH) | ComfyUI custom nodes |
-| [S4F3 SH3LL](https://github.com/46b-ETYKiAL/Itasha.Corp_S4F3-SH3LL) | AI coding CLI |
-
----
-
-## > Security
-
-For security vulnerability reports, see [SECURITY.md](SECURITY.md).
-
-- **Do not open public issues** for security vulnerabilities
-- Use [GitHub Security Advisories](https://github.com/46b-ETYKiAL/Itasha.Corp_S4F3-R3L4Y/security/advisories/new) or email **security@itasha.corp**
-- MCP servers should run with minimal filesystem permissions
-- All external API calls use TLS; secrets are passed via environment variables
-
----
-
-## > License
-
-[Apache License 2.0](LICENSE) — Itasha Corp, 2026.
-
-<div align="center">
-
-```
-  ┌──────────────────────────────────────────┐
-  │                                          │
-  │   every signal finds its relay.          │
-  │                                          │
-  │   ░░░ operator23a is watching ░░░        │
-  │                                          │
-  └──────────────────────────────────────────┘
-```
-
-</div>
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset=".github/assets/footer.svg" />
+    <source media="(prefers-color-scheme: light)" srcset=".github/assets/footer.svg" />
+    <img src=".github/assets/footer.svg" alt="S4F3-R3L4Y footer — relay signal pattern fading on dark background" />
+  </picture>
+</p>
