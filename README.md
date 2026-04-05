@@ -227,6 +227,17 @@ pip install -e ".[dev]"
 
 ---
 
+## > Security
+
+For security vulnerability reports, see [SECURITY.md](SECURITY.md).
+
+- **Do not open public issues** for security vulnerabilities
+- Use [GitHub Security Advisories](https://github.com/46b-ETYKiAL/Itasha.Corp_S4F3-R3L4Y/security/advisories/new) or email **security@itasha.corp**
+- MCP servers should run with minimal filesystem permissions
+- All external API calls use TLS; secrets are passed via environment variables
+
+---
+
 ## > License
 
 [Apache License 2.0](LICENSE) — Itasha Corp, 2026.
