@@ -14,7 +14,16 @@ dependencies = [
     "websockets",
     "rapidfuzz",
     "pyyaml",
+    "cryptography",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest",
 ]
 
 [project.urls]
 Repository = "https://github.com/46b-ETYKiAL/Itasha.Corp_S4F3-R3L4Y"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
