@@ -63,7 +63,7 @@
       <circle cx="360" cy="561" r="1.6" style="animation: dataBlink 2.6s ease-in-out 0s infinite;"/>
       <circle cx="700" cy="593" r="1.6" style="animation: dataBlink 3.1s ease-in-out 0.8s infinite;"/>
       <circle cx="980" cy="543" r="1.6" style="animation: dataBlink 2.4s ease-in-out 1.4s infinite;"/>
-      <circle cx="498" cy="601" r="1.6" fill="#6ee0bd" style="animation: dataBlink 3.4s ease-in-out 2s infinite;"/>
+      <circle cx="498" cy="601" r="1.6" fill="#74dfbe" style="animation: dataBlink 3.4s ease-in-out 2s infinite;"/>
     </g>
     <!-- CRT roll bar: soft band drifting down the screen -->
     <rect x="28" y="22" width="1224" height="46" fill="#34d0a0" opacity="0.035" style="animation: rollBar 7s linear infinite;"/>
@@ -132,7 +132,7 @@
   <g style="animation: flicker 7s infinite;">
     <text x="640" y="74" text-anchor="middle" font-size="13" fill="#5a6b73" letter-spacing="7" filter="url(#phos)" style="font-family: 'Times New Roman','Times','Matisse',serif; font-weight: 700; transform: scaleX(0.82); transform-origin: 640px 74px; animation: titleBreathe 6s ease-in-out infinite;">I T A S H A . C O R P</text>
     <g font-size="60" font-weight="bold" letter-spacing="6" text-anchor="middle">
-      <text x="643" y="140" fill="#6ee0bd" opacity="0.5" filter="url(#soft)" style="animation: titleGlitch 5.5s steps(1) infinite; transform-origin: 640px 140px;">R3L4Y</text>
+      <text x="643" y="140" fill="#74dfbe" opacity="0.5" filter="url(#soft)" style="animation: titleGlitch 5.5s steps(1) infinite; transform-origin: 640px 140px;">R3L4Y</text>
       <text x="637" y="140" fill="#34d0a0" opacity="0.5" filter="url(#soft)" style="animation: titleGlitch 6.3s steps(1) 0.1s infinite; transform-origin: 640px 140px;">R3L4Y</text>
       <text x="640" y="140" fill="#e9f7ff" filter="url(#glow)" style="animation: titleBreathe 4s ease-in-out infinite;">R3L4Y</text>
     </g>
@@ -154,46 +154,33 @@
       <text x="64" y="448" font-size="11" fill="#5a6b73" letter-spacing="2">local · vetted · sandboxed</text>
     </g>
 
-    <!-- WIDE RIGHT-SIDE INSTRUMENT CLUSTER (SMIL) -->
+    <!-- BESPOKE per-repo right instrument (plan-611) — same fragment as the    -->
+    <!-- header, wrapped in scale(0.82) to fit the narrower social card panel.  -->
     <g transform="translate(830, 206)" style="animation: flicker 9s infinite;" opacity="0.92">
       <text x="20" y="20" fill="#34d0a0" font-size="8.5" letter-spacing="1.6" opacity="0.7">RELAY // hop chain</text>
-      <g>
-        <rect x="20" y="32" width="356" height="64" rx="3" fill="none" stroke="#34d0a0" stroke-width="0.5" opacity="0.25"/>
-        <line x1="20" y1="64" x2="376" y2="64" stroke="#34d0a0" stroke-width="0.4" opacity="0.18"/>
-        <path id="wave" d="M20 64 L70 64 L82 64 L92 40 L104 90 L116 52 L128 64 L196 64 L208 64 L218 46 L230 84 L242 64 L320 64 L332 64 L344 50 L356 78 L376 64"
-              fill="none" stroke="#34d0a0" stroke-width="1.1" opacity="0.85" filter="url(#phos)"/>
-        <circle r="2.2" fill="#e9f7ff" filter="url(#glow)"><animateMotion dur="3.4s" repeatCount="indefinite" rotate="auto"><mpath href="#wave"/></animateMotion></circle>
-        <circle r="1.4" fill="#34d0a0"><animateMotion dur="3.4s" begin="0.5s" repeatCount="indefinite"><mpath href="#wave"/></animateMotion></circle>
-      </g>
-      <g transform="translate(196, 132)">
-        <g fill="#34d0a0" opacity="0.7">
-          <rect x="0" y="44" width="4" height="12"><animate attributeName="height" values="6;30;10;22;6" dur="2.2s" repeatCount="indefinite"/><animate attributeName="y" values="50;26;46;34;50" dur="2.2s" repeatCount="indefinite"/></rect>
-          <rect x="8" y="44" width="4" height="20"><animate attributeName="height" values="14;6;28;12;14" dur="2.6s" repeatCount="indefinite"/><animate attributeName="y" values="42;50;28;44;42" dur="2.6s" repeatCount="indefinite"/></rect>
-          <rect x="16" y="44" width="4" height="8"><animate attributeName="height" values="24;10;18;32;24" dur="2.0s" repeatCount="indefinite"/><animate attributeName="y" values="32;46;38;24;32" dur="2.0s" repeatCount="indefinite"/></rect>
-          <rect x="24" y="44" width="4" height="26"><animate attributeName="height" values="8;26;14;30;8" dur="2.8s" repeatCount="indefinite"/><animate attributeName="y" values="48;30;42;26;48" dur="2.8s" repeatCount="indefinite"/></rect>
-          <rect x="32" y="44" width="4" height="16"><animate attributeName="height" values="20;8;30;12;20" dur="2.4s" repeatCount="indefinite"/><animate attributeName="y" values="36;48;26;44;36" dur="2.4s" repeatCount="indefinite"/></rect>
-          <rect x="40" y="44" width="4" height="22"><animate attributeName="height" values="10;28;8;24;10" dur="2.1s" repeatCount="indefinite"/><animate attributeName="y" values="46;28;48;32;46" dur="2.1s" repeatCount="indefinite"/></rect>
+      <g transform="translate(0, 26) scale(0.82)">
+              <g transform="translate(0,130)" filter="url(#phos)">
+        <line x1="40" y1="0" x2="440" y2="0" stroke="#34d0a0" stroke-width="0.7" opacity="0.3"/>
+        <g>
+          <g transform="translate(60,0)"><circle r="18" fill="none" stroke="#34d0a0" stroke-width="1.2" opacity="0.6"/><text y="4" text-anchor="middle" font-size="9" fill="#34d0a0">src</text></g>
+          <g transform="translate(180,0)"><circle r="18" fill="none" stroke="#34d0a0" stroke-width="1.2" opacity="0.6"/><text y="4" text-anchor="middle" font-size="9" fill="#34d0a0">r1</text></g>
+          <g transform="translate(300,0)"><circle r="18" fill="none" stroke="#34d0a0" stroke-width="1.2" opacity="0.6"/><text y="4" text-anchor="middle" font-size="9" fill="#34d0a0">r2</text></g>
+          <g transform="translate(420,0)"><circle r="18" fill="none" stroke="#74dfbe" stroke-width="1.4" opacity="0.8"/><text y="4" text-anchor="middle" font-size="9" fill="#74dfbe">dst</text></g>
         </g>
-        <g transform="translate(0, 64)" filter="url(#phos)">
-          <rect x="0" y="0" width="180" height="44" rx="3" fill="none" stroke="#34d0a0" stroke-width="0.7" opacity="0.3"/>
-          <text x="10" y="15" font-size="8.5" fill="#34d0a0" letter-spacing="1.2">RELAY</text>
-          <text x="170" y="15" text-anchor="end" font-size="7.5" fill="#6fb89a"><animate attributeName="opacity" values="0.5;1;0.5" dur="2s" repeatCount="indefinite"/>RELAYING</text>
-          <line x1="10" y1="22" x2="170" y2="22" stroke="#5a6b73" stroke-width="0.5" opacity="0.4"/>
-          <text x="10" y="36" font-size="8" fill="#c8d6dc">servers</text>
-          <text x="170" y="36" text-anchor="end" font-size="7.5" fill="#34d0a0" letter-spacing="0.6">vetted</text>
+        <g stroke="#34d0a0" stroke-width="1" opacity="0.4">
+          <path d="M82 0 L156 0 M148 -5 L156 0 L148 5"/><path d="M202 0 L276 0 M268 -5 L276 0 L268 5"/><path d="M322 0 L396 0 M388 -5 L396 0 L388 5"/>
+        </g>
+        <circle r="4" fill="#e9f7ff" filter="url(#glow)">
+          <animateMotion dur="3.6s" repeatCount="indefinite" keyPoints="0;0.33;0.33;0.66;0.66;1;1" keyTimes="0;0.28;0.4;0.62;0.74;0.95;1" calcMode="linear" path="M60 0 L180 0 L180 0 L300 0 L300 0 L420 0 L420 0"/>
+        </circle>
+        <g fill="#34d0a0">
+          <circle cx="60" cy="0" r="3"><animate attributeName="opacity" values="1;0.3" dur="3.6s" repeatCount="indefinite"/></circle>
+          <circle cx="180" cy="0" r="3"><animate attributeName="opacity" values="0.3;1;0.3" dur="3.6s" begin="1.0s" repeatCount="indefinite"/></circle>
+          <circle cx="300" cy="0" r="3"><animate attributeName="opacity" values="0.3;1;0.3" dur="3.6s" begin="2.0s" repeatCount="indefinite"/></circle>
         </g>
       </g>
-      <g transform="translate(70, 174)" filter="url(#phos)">
-        <ellipse rx="62" ry="40" fill="none" stroke="#34d0a0" stroke-width="0.5" opacity="0.3"/>
-        <ellipse rx="40" ry="26" fill="none" stroke="#34d0a0" stroke-width="0.4" opacity="0.22"/>
-        <g opacity="0.55">
-          <path d="M0 0 L62 0 A62 40 0 0 1 31 34.6 Z" fill="url(#radarSweep)">
-            <animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="5s" repeatCount="indefinite"/>
-          </path>
-        </g>
-        <circle cx="34" cy="-14" r="1.8" fill="#34d0a0"><animate attributeName="opacity" values="0;1;0" dur="5s" begin="0.6s" repeatCount="indefinite"/></circle>
-        <circle cx="-28" cy="18" r="1.8" fill="#34d0a0"><animate attributeName="opacity" values="0;1;0" dur="5s" begin="2.1s" repeatCount="indefinite"/></circle>
-        <circle r="2" fill="#34d0a0" filter="url(#glow)"/>
+      <text x="40" y="226" font-size="10" fill="#6fb89a" font-family="monospace">vetted · sandboxed · logged</text>
+    
       </g>
     </g>
     </g>
@@ -202,7 +189,7 @@
   <g>
     <circle cx="56" cy="627" r="3.5" fill="#6fb89a" opacity="0.7" style="animation: heartbeat 2.4s ease-in-out infinite; transform-origin: 56px 627px;"/>
     <circle cx="71" cy="627" r="3" fill="#34d0a0" opacity="0.45"/>
-    <circle cx="86" cy="627" r="3" fill="#6ee0bd" opacity="0.4"/>
+    <circle cx="86" cy="627" r="3" fill="#74dfbe" opacity="0.4"/>
     <text x="108" y="627" font-size="9" fill="#3a4a52" letter-spacing="3.2" dominant-baseline="central">ITASHA.CORP</text>
     <text x="640" y="627" font-size="9" fill="#3a4a52" letter-spacing="3" dominant-baseline="central" text-anchor="middle">RELAY-CORE · present day · present time</text>
     <text x="1208" y="627" font-size="9" fill="#3a4a52" letter-spacing="2.4" dominant-baseline="central" text-anchor="end">CRT-IC v3</text>
