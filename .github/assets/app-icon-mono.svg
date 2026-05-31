@@ -1,0 +1,29 @@
+<!-- Itasha Corp app icon (mono) — 1024×1024 — CRT-IC v3 symbolic variant -->
+<!-- Single-colour symbolic variant for Windows tray, Linux hicolor-symbolic, -->
+<!-- and notification glyphs. currentColor (defaults to #34d0a0), transparent -->
+<!-- background, no plate, no kanji/kamea chrome — the bare summoning ring + 4 -->
+<!-- seal-ticks + the M-15 0 L-3 0 M-6 -3 L-3 0 L-6 3 M3 0 L15 0 M12 -3 L15 0 L12 3 M0 -8 A8 8 0 1 0 0.01 -8 core glyph. -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="1024" height="1024" role="img" aria-label="R3L4Y symbolic icon">
+  <title>R3L4Y app icon — monochrome / symbolic</title>
+  <g color="#34d0a0">
+    <!-- summoning ring + 4 seal-ticks -->
+    <g stroke="currentColor" fill="none">
+      <circle cx="512" cy="512" r="320" stroke-width="14"/>
+      <g stroke-width="18" stroke-linecap="round">
+        <line x1="512" y1="160" x2="512" y2="208"/>
+        <line x1="864" y1="512" x2="816" y2="512"/>
+        <line x1="512" y1="864" x2="512" y2="816"/>
+        <line x1="160" y1="512" x2="208" y2="512"/>
+      </g>
+    </g>
+    <!-- M-15 0 L-3 0 M-6 -3 L-3 0 L-6 3 M3 0 L15 0 M12 -3 L15 0 L12 3 M0 -8 A8 8 0 1 0 0.01 -8 core glyph (centred, scaled to fill the ring). -->
+    <!-- scale 8.4 → glyph spans ~±150px; stroke 1.8 × 8.4 ≈ 15px effective: -->
+    <!-- a bold line-figure, NOT a filled blob. -->
+    <g transform="translate(512,512)">
+      <g stroke="currentColor" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round" transform="scale(8.4)">
+        <path d="M-15 0 L-3 0 M-6 -3 L-3 0 L-6 3 M3 0 L15 0 M12 -3 L15 0 L12 3 M0 -8 A8 8 0 1 0 0.01 -8"/>
+      </g>
+    </g>
+  </g>
+  <style>@media (prefers-reduced-motion: reduce) { * { animation: none !important; } }</style>
+</svg>
